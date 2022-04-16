@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <label for="txtMemberName" class="col-sm-2"> Add ration member</label>
+        <div class="col-sm-3">
+            <input type="text" id="txtMemberName" [(ngModel)]="username" (keypress)="onTextChange($event)"
+                class="form-control">
+        </div>
+        <div class="col-sm-3">
+            <button type="button" (click)="AddMember()" class="btn btn-secondary">Add ration memeber</button>
+        </div>
+        <div class="col-sm-2">
+            <ng-template [ngIf]="erroMsg !=''">
+                <span id="errMsg" class="alert alert-danger">{{erroMsg}}</span>
+            </ng-template>
+        </div>
+        <div  class="col-sm-2">
+            <button type="button" class="btn btn-sm btn-secondary" (click)="CreatePDF()">PDF</button>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-6 align-items-right">
+            <span>
+                Ration Total Amount : {{rationTotalAmount | number}} &#8377;
+            </span>
+        </div>
+        <div class="col-sm-6 align-items-left">
+            <span>
+                Per Person Amount : {{perPersonAmount | number}} &#8377;
+            </span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 ">
+                <ng-container #rationUser1>
+                </ng-container>
+            </div>
+            <div class="col-md-4">
+                <ng-container #rationUser2>
+                </ng-container>
+            </div>
+            <div class="col-md-4">
+                <ng-container #rationUser3>
+                </ng-container>
+            </div>
+        </div>
+      
+    </div>
+</div>

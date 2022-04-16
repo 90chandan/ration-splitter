@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+
+            <span>
+                <strong >{{userName}} : {{userRationTotal}} &#8377;</strong>
+            </span>
+            <span>
+                <button type="button" class="btn close" aria-label="close">
+                    <span aria-hidden="true">&times; </span>
+                </button>
+            </span>
+        </div>
+        <div class="card-body" style="padding: 0px 0px 0px 0px;">
+            <ng-container #itemContainer>
+            </ng-container>
+        </div>
+        <div class="card-footer">
+            <div class="">
+                <div class="">
+                    Total : <span>{{userRationTotal |number}}  &#8377;</span>
+                </div>
+                <div class="">
+                    Balance : <span> {{userRationBalance | number}} &#8377;</span>
+                </div>
+                <div class="payable" *ngIf="userRationBalance < 0">
+                    Payable : 
+                    <ul>
+                        <li *ngFor="let pay of payabletList">{{pay.PaymentToUserName}} : {{pay.Amount |number}}</li>
+                    </ul>
+                </div>
+                <div *ngIf="userRationBalance > 0" >
+                    Receivable : 
+                    <ul>
+                        <li *ngFor="let recv of receivableList">{{recv.PaymentFromUserName}} : {{recv.Amount |number}}</li>
+                    </ul>
+                </div>
+                <div *ngIf="userRationBalance == 0">
+                    No payable nor Receivable
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
